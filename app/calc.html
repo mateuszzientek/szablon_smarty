@@ -1,0 +1,54 @@
+{extends file="../templates/main.html"}
+
+{block name=content}
+ <section>
+	<form form action="{$app_url}/app/calc.php" method="post">
+									<div class="fields">
+										<div class="field half">
+											<label for="kwota">Podaj kwote</label>
+											<input type="text" name="kwota" id="kwota" value="{$form['kwota']}" />
+										</div>
+										<div class="field half">
+											<label for="lata">Podaj ilosc lat</label>
+											<input type="text" name="lata" id="lata" value="{$form['lata']}"/>
+										</div>
+										<div class="field half">
+											<label for="opr">Podaj oprocentowanie</label>
+											<input type="text" name="opr" id="opr" value="{$form['opr']}"/>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Oblicz" class="primary" /></li>
+										<li><input type="reset" value="Wyczysc" /></li>
+									</ul>
+								</form>
+                            </section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										
+{if isset($messages)}
+	{if count($messages) > 0} 
+		<h4>Wystąpiły błędy: </h4>
+		<ol>
+		{foreach  $messages as $msg}
+		{strip}
+			<li>{$msg}</li>
+		{/strip}
+		{/foreach}
+		</ol>
+	{/if}
+{/if}
+
+
+{if isset($result)}
+	<h4>Wynik:</h4>
+	<p>
+	{$result} zł
+	</p>
+{/if}
+
+</div>
+</section>									
+</section>
+{/block}
